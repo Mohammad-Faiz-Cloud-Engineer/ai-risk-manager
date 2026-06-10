@@ -7,6 +7,9 @@ The format is based on Keep a Changelog, and this project follows Semantic Versi
 ## [Unreleased]
 
 ### Added
+- Added PR diff detection for newly introduced 4xx branches without matching negative-path test assertions.
+- Added PR diff detection for documented mapping-key renames that leave stale public contracts.
+- Added a Django integrity signal for shared constant create defaults inside uniqueness handling.
 - Added a Python integrity signal for lossy `decode(errors="replace"|"ignore")` transformations.
 - Added Gemini CLI as a second external-judge adapter with the same blind packet and consensus contracts as Claude.
 - Added a blind external-judge workflow with GitHub PR evidence packets, pinned Claude assessments, packet-hash provenance, and multi-judge consensus reporting.
@@ -20,6 +23,7 @@ The format is based on Keep a Changelog, and this project follows Semantic Versi
 - Added a GitLab CI merge-request review example for advisory risk analysis.
 
 ### Changed
+- Public PR corpus now includes verified DRF compatibility, uniqueness, and clean-control outcomes from retrospective review.
 - Generated-test analysis now focuses on the test's primary write call, avoids treating captured current time as standalone flakiness evidence, and keeps unchanged generated-test debt out of PR merge actions.
 - Public PR benchmark seed corpus now includes 15 additional unlabeled candidates from FastAPI, DRF, Express, and full-stack FastAPI template repositories.
 - Public PR benchmark seed corpus now labels all initial public PR cases with expected product outcomes.
@@ -37,6 +41,7 @@ The format is based on Keep a Changelog, and this project follows Semantic Versi
 - Removed the empty root `.gitkeep` placeholder.
 
 ### Fixed
+- PR comment delivery failures no longer mark an otherwise successful AI Risk Analysis workflow as failed.
 - Kept Gemini external-judge tool isolation compatible with Gemini CLI 0.46.0.
 - Full-fallback PR summaries now hide unscoped new high-severity repo-wide findings from top risks and test-first actions.
 - PR summaries now stay aligned with merge triage test-first actions, and full-fallback PR analysis hides repo-wide unchanged noise from merge triage scoring.
