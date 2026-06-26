@@ -1174,7 +1174,7 @@ def _run_pr_change_risk_rule(signals: SignalBundle) -> list[Finding]:
             continue
 
         if issue_type == "new_4xx_branch_without_negative_test_delta":
-            new_4xx_changed_test_count = str(signal.attributes.get("changed_test_count", "0")).strip() or "0"
+            new_4xx_changed_test_count = str(signal.attributes.get("changed_test_count") or "0").strip()
             finding_id = f"pr_new_4xx_branch_without_negative_test_delta:{signal.source_ref}:{signal.id}"
             findings.append(
                 Finding(
